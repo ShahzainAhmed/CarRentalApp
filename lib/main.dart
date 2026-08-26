@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_colors.dart';
-import 'package:mobile_app_with_api/app/modules/home/home_screen.dart';
+import 'package:mobile_app_with_api/app/constants/app_colors.dart';
+import 'package:mobile_app_with_api/app/routes/app_pages.dart';
+import 'package:mobile_app_with_api/app/routes/app_routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const CarRentalApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CarRentalApp extends StatelessWidget {
+  const CarRentalApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +21,14 @@ class MyApp extends StatelessWidget {
             overscroll: false,
           ),
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'Car Rental App',
           theme: ThemeData(
             bottomSheetTheme: BottomSheetThemeData(
-              backgroundColor: AppColors.kWhiteColor.withOpacity(0.8),
+              backgroundColor: AppColors.kWhiteColor.withValues(alpha: 0.8),
             ),
           ),
-          home: const HomeScreen(),
+          initialRoute: AppRoutes.home,
+          getPages: AppPages.pages,
         );
       },
     );

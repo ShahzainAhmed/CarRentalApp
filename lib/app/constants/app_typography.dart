@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTypography {
   // Light
+  static TextStyle kLight12 =
+      GoogleFonts.poppins(fontSize: 12.sp, fontWeight: FontWeight.w400);
   static TextStyle kLight16 =
       GoogleFonts.poppins(fontSize: 16.sp, fontWeight: FontWeight.w400);
 

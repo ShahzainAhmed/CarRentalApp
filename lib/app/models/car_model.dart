@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_assets.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_colors.dart';
+import 'package:mobile_app_with_api/app/constants/app_assets.dart';
+import 'package:mobile_app_with_api/app/constants/app_colors.dart';
 import 'package:mobile_app_with_api/app/models/car_details_model.dart';
 
 class CarModel {
   final String title;
-  final String subtitle;
+  final String description;
+  final String price;
   final String carMake;
   final String image;
   final Color color;
@@ -13,7 +14,8 @@ class CarModel {
 
   CarModel({
     required this.title,
-    required this.subtitle,
+    required this.description,
+    required this.price,
     required this.image,
     required this.color,
     required this.carMake,
@@ -21,10 +23,12 @@ class CarModel {
   });
 }
 
-List myLargeTileList = [
+List<CarModel> myLargeTileList = [
   CarModel(
     title: 'Renault Clio',
-    subtitle: '\$ 60 / day',
+    description:
+        'A stylish and compact hatchback that is easy to drive, fuel-efficient, and perfect for exploring the city or taking short trips.',
+    price: '\$ 60 / day',
     image: AppAssets.kCar1,
     color: AppColors.kPrimaryColor,
     carMake: "Renault",
@@ -37,7 +41,9 @@ List myLargeTileList = [
   ),
   CarModel(
     title: 'Peugeot 107',
-    subtitle: '\$ 55 / day',
+    description:
+        'A compact and economical city car with a simple, comfortable interior and excellent maneuverability for busy streets and everyday travel.',
+    price: '\$ 55 / day',
     image: AppAssets.kCar4,
     color: AppColors.kPurpleColor,
     carMake: "Peugeot",
@@ -50,7 +56,9 @@ List myLargeTileList = [
   ),
   CarModel(
     title: 'Volkswagen Polo',
-    subtitle: '\$ 45 / day',
+    description:
+        'A reliable and practical hatchback offering a comfortable ride, responsive handling, and plenty of space for everyday city and highway journeys.',
+    price: '\$ 45 / day',
     color: AppColors.kOrangeColor,
     image: AppAssets.kCar2,
     carMake: "Volkswagen",
@@ -63,7 +71,9 @@ List myLargeTileList = [
   ),
   CarModel(
     title: 'Audi A3',
-    subtitle: '\$ 80 / day',
+    description:
+        'A premium compact car combining elegant design, a comfortable interior, and smooth performance for a refined and enjoyable driving experience.',
+    price: '\$ 80 / day',
     image: AppAssets.kCar3,
     color: AppColors.kGreyColor,
     carMake: "Audi",
@@ -76,10 +86,12 @@ List myLargeTileList = [
   ),
 ];
 
-List mySmallTileList = [
+List<CarModel> mySmallTileList = [
   CarModel(
     title: 'Volkswagen Polo',
-    subtitle: '\$ 45 / day',
+    description:
+        'A reliable and practical hatchback offering a comfortable ride, responsive handling, and plenty of space for everyday city and highway journeys.',
+    price: '\$ 45 / day',
     color: AppColors.kOrangeColor,
     image: AppAssets.kCar2,
     carMake: "Volkswagen",
@@ -92,7 +104,9 @@ List mySmallTileList = [
   ),
   CarModel(
     title: 'Audi A3',
-    subtitle: '\$ 80 / day',
+    description:
+        'A premium compact car combining elegant design, a comfortable interior, and smooth performance for a refined and enjoyable driving experience.',
+    price: '\$ 80 / day',
     image: AppAssets.kCar3,
     color: AppColors.kGreyColor,
     carMake: "Audi",
@@ -105,7 +119,9 @@ List mySmallTileList = [
   ),
   CarModel(
     title: 'Renault Clio',
-    subtitle: '\$ 60 / day',
+    description:
+        'A stylish and compact hatchback that is easy to drive, fuel-efficient, and perfect for exploring the city or taking short trips.',
+    price: '\$ 60 / day',
     image: AppAssets.kCar1,
     color: AppColors.kPrimaryColor,
     carMake: "Renault",
@@ -118,7 +134,9 @@ List mySmallTileList = [
   ),
   CarModel(
     title: 'Peugeot 107',
-    subtitle: '\$ 55 / day',
+    description:
+        'A compact and economical city car with a simple, comfortable interior and excellent maneuverability for busy streets and everyday travel.',
+    price: '\$ 55 / day',
     image: AppAssets.kCar4,
     color: AppColors.kPurpleColor,
     carMake: "Peugeot",

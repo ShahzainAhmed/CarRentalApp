@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_colors.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_typography.dart';
+import 'package:mobile_app_with_api/app/constants/app_colors.dart';
+import 'package:mobile_app_with_api/app/constants/app_typography.dart';
 import 'package:mobile_app_with_api/app/models/car_details_model.dart';
 
 class MyDetailsContainer extends StatefulWidget {

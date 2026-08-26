@@ -1,9 +1,10 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_colors.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_typography.dart';
+import 'package:mobile_app_with_api/app/constants/app_colors.dart';
+import 'package:mobile_app_with_api/app/constants/app_typography.dart';
 import 'package:mobile_app_with_api/app/models/car_model.dart';
 import 'package:mobile_app_with_api/app/modules/detail_screen/detail_screen.dart';
 import 'package:mobile_app_with_api/app/modules/home/components/custom_app_bar.dart';
@@ -32,8 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.only(left: 20.w),
-                height: Get.height / 1.1,
+                height: Get.height / 1.11,
                 decoration: BoxDecoration(
                     color: AppColors.kWhiteColor,
                     borderRadius: BorderRadius.only(
@@ -46,28 +46,30 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(right: 20.w),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               "Available Cars",
-                              style: AppTypography.kExtraBold20,
+                              style: AppTypography.kBold16,
                             ),
                             Text(
                               "View All",
-                              style: AppTypography.kBold14,
+                              style: AppTypography.kBold12.copyWith(
+                                  color:
+                                      AppColors.kBlackColor.withValues(alpha: 0.5)),
                             )
                           ],
                         ),
                       ),
                       SizedBox(height: 20.h),
-                      const MyCustomTabBar(),
+                      const TabBarWidget(),
                       SizedBox(height: 20.h),
                       SizedBox(
                         height: 280.h,
                         child: ListView.separated(
-                          padding: EdgeInsets.only(right: 20.w),
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
                           separatorBuilder: (context, index) =>
                               SizedBox(width: 20.w),
                           physics: const BouncingScrollPhysics(),
@@ -77,13 +79,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             return Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                MyLargeTiles(
-                                  onTap: () => Get.to(
-                                    DetailScreen(
-                                      carModel: myLargeTileList[index],
+                                FadeInUp(
+                                  duration: const Duration(milliseconds: 1500),
+                                  child: MyLargeTiles(
+                                    onTap: () => Get.to(
+                                      DetailScreen(),
+                                      arguments: myLargeTileList[index],
                                     ),
+                                    largeTileModel: myLargeTileList[index],
                                   ),
-                                  largeTileModel: myLargeTileList[index],
                                 ),
                               ],
                             );
@@ -91,15 +95,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       SizedBox(height: 10.h),
-                      Text(
-                        "Active Promotions",
-                        style: AppTypography.kExtraBold20,
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: Text(
+                          "Active Promotions",
+                          style: AppTypography.kBold16,
+                        ),
                       ),
-                      SizedBox(height: 10.h),
+                      // SizedBox(height: 10.h),
                       SizedBox(
                         height: 130.h,
                         child: ListView.separated(
-                          padding: EdgeInsets.only(right: 20.w),
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
                           physics: const BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
                           separatorBuilder: (context, index) =>
@@ -109,10 +116,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             return Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                MySmallTile(
-                                  onTap: () => Get.to(DetailScreen(
-                                      carModel: mySmallTileList[index])),
-                                  carModel: mySmallTileList[index],
+                                FadeInUp(
+                                  duration: const Duration(milliseconds: 1500),
+                                  child: MySmallTile(
+                                    onTap: () => Get.to(
+                                      DetailScreen(),
+                                      arguments: mySmallTileList[index],
+                                    ),
+                                    carModel: mySmallTileList[index],
+                                  ),
                                 ),
                               ],
                             );

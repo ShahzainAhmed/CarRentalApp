@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_colors.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_typography.dart';
+import 'package:mobile_app_with_api/app/constants/app_colors.dart';
+import 'package:mobile_app_with_api/app/constants/app_typography.dart';
 import 'package:mobile_app_with_api/app/models/car_model.dart';
 
 class MyLargeTiles extends StatefulWidget {
@@ -28,7 +28,7 @@ class MyLargeTilesState extends State<MyLargeTiles> {
           borderRadius: BorderRadius.circular(20.r),
           boxShadow: [
             BoxShadow(
-              color: AppColors.kGreyColor.withOpacity(0.2),
+              color: AppColors.kGreyColor.withValues(alpha: 0.2),
               blurRadius: 10,
               offset: const Offset(0, 5),
             )
@@ -56,7 +56,7 @@ class MyLargeTilesState extends State<MyLargeTiles> {
                       .copyWith(color: AppColors.kWhiteColor),
                 ),
                 Text(
-                  widget.largeTileModel.subtitle,
+                  widget.largeTileModel.price,
                   style: AppTypography.kMedium16
                       .copyWith(color: AppColors.kWhiteColor),
                 ),

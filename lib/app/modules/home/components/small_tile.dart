@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_colors.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_typography.dart';
+import 'package:mobile_app_with_api/app/constants/app_colors.dart';
+import 'package:mobile_app_with_api/app/constants/app_typography.dart';
 import 'package:mobile_app_with_api/app/models/car_model.dart';
 import 'package:mobile_app_with_api/app/modules/detail_screen/detail_screen.dart';
 
@@ -30,7 +30,7 @@ class MySmallTileState extends State<MySmallTile> {
           color: widget.carModel.color,
           boxShadow: [
             BoxShadow(
-              color: AppColors.kGreyColor.withOpacity(0.3),
+              color: AppColors.kGreyColor.withValues(alpha: 0.3),
               blurRadius: 8,
               offset: const Offset(0, 5),
             ),
@@ -79,24 +79,24 @@ class MySmallTileState extends State<MySmallTile> {
                 ),
                 OutlinedButton(
                   style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
+                    padding: WidgetStateProperty.all(
                       EdgeInsets.symmetric(
                         horizontal: 10.w,
                       ),
                     ),
-                    side: MaterialStateProperty.all(
+                    side: WidgetStateProperty.all(
                       const BorderSide(
                         color: AppColors.kWhiteColor,
                       ),
                     ),
-                    shape: MaterialStateProperty.all(
+                    shape: WidgetStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.r),
                       ),
                     ),
                   ),
                   onPressed: () =>
-                      Get.to(DetailScreen(carModel: widget.carModel)),
+                      Get.to(DetailScreen(), arguments: widget.carModel),
                   child: Text(
                     "View Details",
                     style: AppTypography.kMedium12

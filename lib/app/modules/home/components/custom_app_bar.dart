@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_colors.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_typography.dart';
+import 'package:mobile_app_with_api/app/constants/app_colors.dart';
+import 'package:mobile_app_with_api/app/constants/app_typography.dart';
 
 class CustomAppBarRow extends StatelessWidget {
   const CustomAppBarRow({super.key});
@@ -11,7 +11,7 @@ class CustomAppBarRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Get.height / 9,
+      height: Get.height / 7,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Row(
@@ -24,12 +24,12 @@ class CustomAppBarRow extends StatelessWidget {
             RichText(
               text: TextSpan(children: [
                 TextSpan(
-                  text: 'Barcelona, ',
+                  text: 'New York City,  ',
                   style: AppTypography.kBold16
                       .copyWith(color: AppColors.kWhiteColor),
                 ),
                 TextSpan(
-                  text: 'Spain',
+                  text: 'USA',
                   style: AppTypography.kMedium16
                       .copyWith(color: AppColors.kPrimaryColor),
                 ),

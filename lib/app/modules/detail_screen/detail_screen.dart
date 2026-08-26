@@ -2,23 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_colors.dart';
-import 'package:mobile_app_with_api/app/data/constants/app_typography.dart';
+import 'package:mobile_app_with_api/app/constants/app_colors.dart';
+import 'package:mobile_app_with_api/app/constants/app_typography.dart';
 import 'package:mobile_app_with_api/app/models/car_model.dart';
 import 'package:mobile_app_with_api/app/modules/detail_screen/components/bottom_sheet_button.dart';
 import 'package:mobile_app_with_api/app/modules/detail_screen/components/details_container.dart';
 
-class DetailScreen extends StatefulWidget {
-  final CarModel carModel;
-  const DetailScreen({super.key, required this.carModel});
+class DetailScreen extends StatelessWidget {
+  const DetailScreen({super.key});
 
-  @override
-  State<DetailScreen> createState() => _DetailScreenState();
-}
-
-class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
+    final carModel = Get.arguments as CarModel;
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -26,44 +21,38 @@ class _DetailScreenState extends State<DetailScreen> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () => Get.back(),
-            icon: const Icon(Icons.arrow_back_ios_new),
-          ),
-          backgroundColor: widget.carModel.color,
-          elevation: 0.0,
-          actions: [
-            Padding(
-              padding: EdgeInsets.only(right: 20.w),
-              child: const Icon(Icons.menu),
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+              color: AppColors.kWhiteColor,
             ),
-          ],
+          ),
+          backgroundColor: carModel.color,
         ),
         body: Stack(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(vertical: 70.h, horizontal: 20.w),
-              height: Get.height / 1.8,
+              padding: EdgeInsets.symmetric(vertical: 90.h, horizontal: 20.w),
+              height: Get.height / 1.7,
               width: Get.width,
-              color: widget.carModel.color,
+              color: carModel.color,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.carModel.title,
+                    carModel.title,
                     style: AppTypography.kBold20
                         .copyWith(color: AppColors.kWhiteColor),
                   ),
                   Text(
-                    widget.carModel.subtitle,
+                    carModel.price,
                     style: AppTypography.kMedium16
                         .copyWith(color: AppColors.kWhiteColor),
                   ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
+                  SizedBox(height: 20.h),
                   Expanded(
                     child: Center(
                       child: Image.asset(
-                        widget.carModel.image,
+                        carModel.image,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -87,15 +76,19 @@ class _DetailScreenState extends State<DetailScreen> {
                   children: [
                     SizedBox(height: 20.h),
                     TabBar(
+                      dividerColor: AppColors.kTransparentColor,
+                      tabAlignment: TabAlignment.center,
+                      overlayColor:
+                          WidgetStateProperty.all(AppColors.kTransparentColor),
                       physics: const BouncingScrollPhysics(),
                       isScrollable: true,
-                      indicatorColor: widget.carModel.color,
+                      indicatorColor: carModel.color,
                       labelColor: AppColors.kBlackColor,
                       unselectedLabelColor: AppColors.kGreyColor,
                       labelStyle: AppTypography.kBold16,
                       indicatorWeight: 3,
                       labelPadding: EdgeInsets.symmetric(horizontal: 25.w),
-                      unselectedLabelStyle: AppTypography.kBold16,
+                      unselectedLabelStyle: AppTypography.kMedium14,
                       tabs: const [
                         Tab(text: "Details"),
                         Tab(text: "Specs"),
@@ -120,13 +113,13 @@ class _DetailScreenState extends State<DetailScreen> {
                                           SizedBox(width: 15.w),
                                       physics: const BouncingScrollPhysics(),
                                       scrollDirection: Axis.horizontal,
-                                      itemCount: widget
-                                          .carModel.myCarDetailsList.length,
+                                      itemCount:
+                                          carModel.myCarDetailsList.length,
                                       itemBuilder: (context, index) {
                                         return MyDetailsContainer(
-                                          color: widget.carModel.color,
-                                          carDetailsModel: widget
-                                              .carModel.myCarDetailsList[index],
+                                          color: carModel.color,
+                                          carDetailsModel:
+                                              carModel.myCarDetailsList[index],
                                         );
                                       },
                                     ),
@@ -135,9 +128,9 @@ class _DetailScreenState extends State<DetailScreen> {
                                   Padding(
                                     padding: EdgeInsets.only(right: 20.w),
                                     child: Text(
-                                      "${widget.carModel.title} is simply dummy text of the printing and typesetting  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+                                      carModel.description,
                                       style: AppTypography.kMedium12,
-                                      textAlign: TextAlign.justify,
+                                      // textAlign: TextAlign.justify,
                                     ),
                                   ),
                                   SizedBox(height: 120.h),
@@ -156,9 +149,7 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
           ],
         ),
-        bottomSheet: MyElevatedButton(
-          color: widget.carModel.color,
-        ),
+        bottomSheet: MyElevatedButton(color: carModel.color),
       ),
     );
   }
