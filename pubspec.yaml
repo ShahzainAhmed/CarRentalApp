@@ -42,6 +42,7 @@ dependencies:
   flutter_svg: ^2.0.7
   bounce: ^1.0.2
   animate_do: ^5.1.0
+  shared_preferences: ^2.5.5
 
 dev_dependencies:
   flutter_test:

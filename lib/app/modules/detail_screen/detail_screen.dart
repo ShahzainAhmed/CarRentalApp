@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -38,22 +39,31 @@ class DetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    carModel.title,
-                    style: AppTypography.kBold20
-                        .copyWith(color: AppColors.kWhiteColor),
+                  FadeInDown(
+                    duration: const Duration(milliseconds: 1000),
+                    delay: Duration(milliseconds: 100),
+                    child: Text(
+                      carModel.title,
+                      style: AppTypography.kBold20
+                          .copyWith(color: AppColors.kWhiteColor),
+                    ),
                   ),
-                  Text(
-                    carModel.price,
-                    style: AppTypography.kMedium16
-                        .copyWith(color: AppColors.kWhiteColor),
+                  FadeInDown(
+                    duration: const Duration(milliseconds: 1000),
+                    delay: Duration(milliseconds: 100),
+                    child: Text(
+                      carModel.price,
+                      style: AppTypography.kMedium16
+                          .copyWith(color: AppColors.kWhiteColor),
+                    ),
                   ),
                   SizedBox(height: 20.h),
                   Expanded(
                     child: Center(
-                      child: Image.asset(
-                        carModel.image,
-                        fit: BoxFit.cover,
+                      child: BounceInRight(
+                        duration: const Duration(milliseconds: 1000),
+                        delay: Duration(milliseconds: 100),
+                        child: Image.asset(carModel.image, fit: BoxFit.cover),
                       ),
                     ),
                   ),
@@ -75,25 +85,29 @@ class DetailScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: 20.h),
-                    TabBar(
-                      dividerColor: AppColors.kTransparentColor,
-                      tabAlignment: TabAlignment.center,
-                      overlayColor:
-                          WidgetStateProperty.all(AppColors.kTransparentColor),
-                      physics: const BouncingScrollPhysics(),
-                      isScrollable: true,
-                      indicatorColor: carModel.color,
-                      labelColor: AppColors.kBlackColor,
-                      unselectedLabelColor: AppColors.kGreyColor,
-                      labelStyle: AppTypography.kBold16,
-                      indicatorWeight: 3,
-                      labelPadding: EdgeInsets.symmetric(horizontal: 25.w),
-                      unselectedLabelStyle: AppTypography.kMedium14,
-                      tabs: const [
-                        Tab(text: "Details"),
-                        Tab(text: "Specs"),
-                        Tab(text: "Photos"),
-                      ],
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 1000),
+                      delay: Duration(milliseconds: 100),
+                      child: TabBar(
+                        dividerColor: AppColors.kTransparentColor,
+                        tabAlignment: TabAlignment.center,
+                        overlayColor: WidgetStateProperty.all(
+                            AppColors.kTransparentColor),
+                        physics: const BouncingScrollPhysics(),
+                        isScrollable: true,
+                        indicatorColor: carModel.color,
+                        labelColor: AppColors.kBlackColor,
+                        unselectedLabelColor: AppColors.kGreyColor,
+                        labelStyle: AppTypography.kBold16,
+                        indicatorWeight: 3,
+                        labelPadding: EdgeInsets.symmetric(horizontal: 25.w),
+                        unselectedLabelStyle: AppTypography.kMedium14,
+                        tabs: const [
+                          Tab(text: "Details"),
+                          Tab(text: "Specs"),
+                          Tab(text: "Photos"),
+                        ],
+                      ),
                     ),
                     Expanded(
                       child: Padding(
@@ -116,10 +130,16 @@ class DetailScreen extends StatelessWidget {
                                       itemCount:
                                           carModel.myCarDetailsList.length,
                                       itemBuilder: (context, index) {
-                                        return MyDetailsContainer(
-                                          color: carModel.color,
-                                          carDetailsModel:
-                                              carModel.myCarDetailsList[index],
+                                        return FadeInUp(
+                                          duration: const Duration(
+                                              milliseconds: 1000),
+                                          delay: Duration(
+                                              milliseconds: 100 * index),
+                                          child: FeaturesWidget(
+                                            color: carModel.color,
+                                            carDetailsModel: carModel
+                                                .myCarDetailsList[index],
+                                          ),
                                         );
                                       },
                                     ),
@@ -127,10 +147,15 @@ class DetailScreen extends StatelessWidget {
                                   SizedBox(height: 30.h),
                                   Padding(
                                     padding: EdgeInsets.only(right: 20.w),
-                                    child: Text(
-                                      carModel.description,
-                                      style: AppTypography.kMedium12,
-                                      // textAlign: TextAlign.justify,
+                                    child: FadeInUp(
+                                      duration:
+                                          const Duration(milliseconds: 1000),
+                                      delay: Duration(milliseconds: 100),
+                                      child: Text(
+                                        carModel.description,
+                                        style: AppTypography.kMedium12,
+                                        // textAlign: TextAlign.justify,
+                                      ),
                                     ),
                                   ),
                                   SizedBox(height: 120.h),
@@ -149,7 +174,11 @@ class DetailScreen extends StatelessWidget {
             ),
           ],
         ),
-        bottomSheet: MyElevatedButton(color: carModel.color),
+        bottomSheet: FadeInUp(
+          duration: const Duration(milliseconds: 1000),
+          delay: Duration(milliseconds: 100),
+          child: MyElevatedButton(color: carModel.color),
+        ),
       ),
     );
   }

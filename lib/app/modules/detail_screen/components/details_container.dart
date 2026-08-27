@@ -5,20 +5,20 @@ import 'package:mobile_app_with_api/app/constants/app_colors.dart';
 import 'package:mobile_app_with_api/app/constants/app_typography.dart';
 import 'package:mobile_app_with_api/app/models/car_details_model.dart';
 
-class MyDetailsContainer extends StatefulWidget {
+class FeaturesWidget extends StatefulWidget {
   final Color color;
   final CarDetailsModel carDetailsModel;
-  const MyDetailsContainer({
+  const FeaturesWidget({
     super.key,
     required this.carDetailsModel,
     required this.color,
   });
 
   @override
-  State<MyDetailsContainer> createState() => MyDetailsContainerState();
+  State<FeaturesWidget> createState() => FeaturesWidgetState();
 }
 
-class MyDetailsContainerState extends State<MyDetailsContainer> {
+class FeaturesWidgetState extends State<FeaturesWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(

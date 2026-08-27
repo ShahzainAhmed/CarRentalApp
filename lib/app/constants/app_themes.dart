@@ -1,32 +1,27 @@
-// import 'package:fitx_workout/app/data/constants/app_colors.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:mobile_app_with_api/app/constants/app_colors.dart';
 
-// class Themes {
-//   static ThemeData primaryTheme = ThemeData(
-//     brightness: Brightness.light,
-//     appBarTheme: const AppBarTheme(
-//       titleSpacing: 0,
-//       color: Colors.transparent,
-//       elevation: 0.0,
-//     ),
-//     scaffoldBackgroundColor: AppColors.kNeutral500,
-//     // bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-//     //   backgroundColor: AppColors.kBackgroundColor,
-//     //   selectedItemColor: AppColors.kPrimaryColor,
-//     //   unselectedItemColor: AppColors.kGreyColor,
-//     // ),
-//     bottomSheetTheme:
-//         const BottomSheetThemeData(backgroundColor: Colors.transparent),
-//   );
-// }
+class AppThemes {
+  static ThemeData primaryTheme = ThemeData(
+    brightness: Brightness.light,
+    appBarTheme: const AppBarTheme(
+      titleSpacing: 0,
+      backgroundColor: Colors.transparent,
+      elevation: 0.0,
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: AppColors.kWhiteColor.withValues(alpha: 0.8),
+    ),
+  );
+}
 
-// SystemUiOverlayStyle defaultOverlay = const SystemUiOverlayStyle(
-//   statusBarColor: Colors.transparent,
-//   systemStatusBarContrastEnforced: true,
-//   statusBarBrightness: Brightness.light,
-//   statusBarIconBrightness: Brightness.dark,
-//   systemNavigationBarColor: Colors.white,
-//   systemNavigationBarDividerColor: Colors.transparent,
-//   systemNavigationBarIconBrightness: Brightness.light,
-// );
+SystemUiOverlayStyle defaultOverlay = const SystemUiOverlayStyle(
+  statusBarColor: Colors.transparent,
+  systemStatusBarContrastEnforced: true,
+  statusBarBrightness: Brightness.light,
+  statusBarIconBrightness: Brightness.dark,
+  systemNavigationBarColor: Colors.white,
+  systemNavigationBarDividerColor: Colors.transparent,
+  systemNavigationBarIconBrightness: Brightness.light,
+);
